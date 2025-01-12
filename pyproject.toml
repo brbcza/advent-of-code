@@ -1,0 +1,35 @@
+[project]
+name = "advent-of-code"
+version = "0.1.0"
+description = "Solutions for Advent of Code"
+authors = [
+    {name = "Filip Tefr",email = "x.x@x.x"}
+]
+readme = "README.md"
+license = ""
+requires-python = ">=3.10"
+dependencies = [
+    "numpy (>=2.2.1,<3.0.0)",
+    "matplotlib (>=3.10.0,<4.0.0)",
+    "advent-of-code-data (>=2.1.0,<3.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)"
+
+]
+
+[project.scripts]
+aoc_runner = 'aoc.cli:main'
+
+[tool.poetry]
+packages = [
+    { include = "aoc", from = "src" },
+]
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.0.1"
+pytest = "^8.3.4"
+coverage = "^7.6.10"
+black = "^24.10.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,41 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+    PYTHON: '{{if eq OS "windows"}}python{{else}}python3{{end}}'
+    SHELL: '{{if eq OS "windows"}}powershell{{end}}'
+    TEST_REPORT_PATH: test/test_report
+    COVERAGE_REPORT_PATH: test/test_report_coverage
+
+env:
+    POETRY_VIRTUALENVS_IN_PROJECT: true
+
+dotenv:
+    - "local.env"
+
+tasks:
+    install:
+        desc: Creates development environment
+        vars:
+            INSTALL_HOOKS: '{{default "1" .INSTALL_HOOKS}}'
+        cmds:
+            - poetry lock
+            - poetry install
+            - '{{if eq .INSTALL_HOOKS "1"}}poetry run pre-commit install{{end}}'
+            - '{{if eq .INSTALL_HOOKS "1"}}poetry run pre-commit install --hook-type prepare-commit-msg{{end}}'
+
+    pre-commit:
+        desc: Runs git pre-commit hooks
+        cmds:
+        - poetry run pre-commit run --all-files
+
+    poetry-test:
+        desc: Test the package
+        vars:
+            PYTEST_CMD: pytest -vv --junitxml={{.TEST_REPORT_PATH}}.xml
+        cmds:
+            - cmd: poetry run coverage run --source=src/aoc -m {{.PYTEST_CMD}}
+              ignore_error: true
+            - poetry run coverage report --show-missing
+            - poetry run coverage xml -o {{.COVERAGE_REPORT_PATH}}.xml

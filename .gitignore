@@ -1,0 +1,12 @@
+# Python
+.venv
+.pytest_cache
+__pycache__
+
+# Generated
+.coverage
+poetry.lock
+test/*.xml
+
+# Secrets
+.env
