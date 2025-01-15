@@ -1,0 +1,57 @@
+name: Python CI
+
+on:
+  push:
+    branches:
+      - '**'  # Trigger on push to any branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      AOC_SESSION: ${{ secrets.AOC_SESSION }}
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13.1
+
+      - name: Install pipx and poetry
+        run: |
+          # Install pipx (Python package manager)
+          python -m pip install --upgrade pip
+          python -m pip install pipx
+          # Ensure pipx binary path is included
+          python -m pipx ensurepath
+          # Install poetry using pipx
+          pipx install poetry
+
+      - name: Install Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: |
+          task install INSTALL_HOOKS=0
+
+      - name: Run tests
+        run: |
+          task poetry-test
+
+      - name: Upload test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: |
+            test/test_report.xml
+            test/test_report_coverage.xml
