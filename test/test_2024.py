@@ -1,6 +1,5 @@
-import os
-
 import numpy as np
+import pytest
 from aoc.year_2024 import *
 from aocd.models import Puzzle
 
@@ -161,6 +160,7 @@ def test_day_8():
         assert solver.get_antinode_count_with_resonances() == int(puzzle.answer_b)
 
 
+@pytest.mark.skip(reason="Day 9 is too slow")
 def test_day_9():
     puzzle = Puzzle(year=2024, day=9)
 

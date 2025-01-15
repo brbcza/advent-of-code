@@ -52,8 +52,6 @@ class AoC2024Day7:
                 else:
                     return False
             elif len(members) > 1:
-                if members[0] >= solution:
-                    return False
                 return (
                     solve(solution, [members[0] + members[1]] + members[2:])
                     or solve(solution, [members[0] * members[1]] + members[2:])

@@ -131,7 +131,7 @@ class AoC2024Day20:
 
 
 def main():
-    uzzle = Puzzle(year=2024, day=20)
+    puzzle = Puzzle(year=2024, day=20)
     solver = AoC2024Day20(data=puzzle.input_data)
     cheat_count = solver.count_cheats(100, 2)
     long_cheat_count = solver.count_cheats(100, 20)
