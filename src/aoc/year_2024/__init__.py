@@ -11,6 +11,7 @@ from .day_18 import AoC2024Day18
 from .day_19 import AoC2024Day19
 from .day_2 import AoC2024Day2
 from .day_20 import AoC2024Day20
+from .day_22 import AoC2024Day22
 from .day_3 import AoC2024Day3
 from .day_4 import AoC2024Day4
 from .day_5 import AoC2024Day5
@@ -40,4 +41,5 @@ __all__ = [
     "AoC2024Day18",
     "AoC2024Day19",
     "AoC2024Day20",
+    "AoC2024Day22",
 ]

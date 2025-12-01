@@ -108,7 +108,7 @@ class AoC2024Day18:
 
 
 def main():
-    uzzle = Puzzle(year=2024, day=18)
+    puzzle = Puzzle(year=2024, day=18)
     solver = AoC2024Day18(data=puzzle.input_data)
     shortest_path = solver.find_shortest_path(70, 70, 1024)
     blocked_path = solver.find_blocked_path(70, 70, 1024, shortest_path)

@@ -210,3 +210,12 @@ def test_day_20(test_input: AoCTestInputInteraface):
         assert solver.count_cheats(min_safe_a, 2) == int(test_input.answer_a)
     if test_input.answer_b:
         assert solver.count_cheats(min_safe_b, 20) == int(test_input.answer_b)
+
+
+@parametrize_aoc_test(2024, 22)
+def test_day_22(test_input: AoCTestInputInteraface):
+    solver = AoC2024Day22(data=test_input.input_data)
+    if test_input.answer_a:
+        assert solver.calc_secrets_sum() == int(test_input.answer_a)
+    if test_input.answer_b:
+        assert solver.get_best_sequence_price() == int(test_input.answer_b)
