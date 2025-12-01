@@ -1,0 +1,15 @@
+from aoc.year_2025 import *
+
+from . import AoCTestInputInteraface
+from . import parametrize_aoc_test
+
+
+@parametrize_aoc_test(2025, 1)
+def test_day_1(test_input: AoCTestInputInteraface):
+    solver = AoC2025Day1(data=test_input.input_data)
+    if test_input.answer_a:
+        assert solver.get_door_password() == int(test_input.answer_a)
+    if not test_input.is_example and test_input.answer_b:
+        assert solver.get_door_password_method_0x434C49434B() == int(
+            test_input.answer_b
+        )
