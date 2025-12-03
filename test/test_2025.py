@@ -13,3 +13,12 @@ def test_day_1(test_input: AoCTestInputInteraface):
         assert solver.get_door_password_method_0x434C49434B() == int(
             test_input.answer_b
         )
+
+
+@parametrize_aoc_test(2025, 2)
+def test_day_2(test_input: AoCTestInputInteraface):
+    solver = AoC2025Day2(data=test_input.input_data)
+    if test_input.answer_a:
+        assert solver.get_invalid_id_sum() == int(test_input.answer_a)
+    if test_input.answer_b:
+        assert solver.get_invalid_id_sum_advanced() == int(test_input.answer_b)
