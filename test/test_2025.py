@@ -22,3 +22,12 @@ def test_day_2(test_input: AoCTestInputInteraface):
         assert solver.get_invalid_id_sum() == int(test_input.answer_a)
     if test_input.answer_b:
         assert solver.get_invalid_id_sum_advanced() == int(test_input.answer_b)
+
+
+@parametrize_aoc_test(2025, 3)
+def test_day_3(test_input: AoCTestInputInteraface):
+    solver = AoC2025Day3(data=test_input.input_data)
+    if test_input.answer_a:
+        assert solver.get_largest_joltage_sum(number_len=2) == int(test_input.answer_a)
+    if test_input.answer_b:
+        assert solver.get_largest_joltage_sum(number_len=12) == int(test_input.answer_b)
