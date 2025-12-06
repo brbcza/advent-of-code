@@ -51,3 +51,12 @@ def test_day_5(test_input: AoCTestInputInteraface):
         assert solver.get_fresh_ingredients_cnt() == int(test_input.answer_a)
     if test_input.answer_b:
         assert solver.get_all_fresh_ingredients_cnt() == int(test_input.answer_b)
+
+
+@parametrize_aoc_test(2025, 6)
+def test_day_6(test_input: AoCTestInputInteraface):
+    solver = AoC2025Day6(data=test_input.input_data)
+    if test_input.answer_a:
+        assert solver.get_problem_sum() == int(test_input.answer_a)
+    if test_input.answer_b:
+        assert solver.get_advanced_problem_sum() == int(test_input.answer_b)
